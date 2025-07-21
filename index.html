@@ -1,1044 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Father of Trading - Premium Crypto Signals</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #f8d030;
-            --secondary: #1a1a2e;
-            --dark: #0f0f1a;
-            --light: #f8f9fa;
-            --accent: #6c63ff;
-            --success: #28a745;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: rgba(10, 10, 20, 0.9);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            padding: 15px 0;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-            color: var(--primary);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-menu {
-            display: none;
-            font-size: 24px;
-            color: var(--light);
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(rgba(10, 10, 20, 0.8), rgba(10, 10, 20, 0.8)), url('https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2232&q=80') no-repeat center center/cover;
-            position: relative;
-            padding-top: 80px;
-        }
-        
-        .hero-content {
-            max-width: 600px;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero h1 span {
-            color: var(--primary);
-        }
-        
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary);
-            color: var(--dark);
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        .btn:hover {
-            background-color: #ffd700;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(248, 208, 48, 0.2);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            margin-left: 15px;
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: var(--dark);
-        }
-        
-        .ticker {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 0;
-            overflow: hidden;
-        }
-        
-        .ticker-content {
-            display: flex;
-            white-space: nowrap;
-            animation: ticker 30s linear infinite;
-        }
-        
-        @keyframes ticker {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        
-        .ticker-item {
-            display: flex;
-            align-items: center;
-            margin-right: 40px;
-        }
-        
-        .ticker-item img {
-            width: 24px;
-            height: 24px;
-            margin-right: 10px;
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-            background-color: var(--secondary);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.8;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary);
-        }
-        
-        .feature-icon {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-        
-        /* Pricing Section */
-        .pricing {
-            padding: 100px 0;
-            background-color: var(--dark);
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .pricing-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-        }
-        
-        .pricing-header {
-            padding: 30px;
-            text-align: center;
-            background-color: rgba(248, 208, 48, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .pricing-header h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        
-        .price {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .price span {
-            font-size: 16px;
-            font-weight: 400;
-            color: var(--light);
-            opacity: 0.8;
-        }
-        
-        .pricing-body {
-            padding: 30px;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-        
-        .pricing-features li {
-            margin-bottom: 15px;
-            position: relative;
-            padding-left: 25px;
-        }
-        
-        .pricing-features li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-        }
-        
-        .popular-tag {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: var(--primary);
-            color: var(--dark);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        
-        /* Profit Sharing Section */
-        .profit-sharing {
-            padding: 100px 0;
-            background-color: var(--secondary);
-            text-align: center;
-        }
-        
-        .profit-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 50px;
-            max-width: 800px;
-            margin: 0 auto;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .profit-card h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-        
-        .profit-split {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
-        
-        .split {
-            padding: 20px;
-            border-radius: 10px;
-            margin: 0 10px;
-            width: 150px;
-        }
-        
-        .split-you {
-            background-color: rgba(40, 167, 69, 0.2);
-            border: 1px solid var(--success);
-        }
-        
-        .split-us {
-            background-color: rgba(108, 99, 255, 0.2);
-            border: 1px solid var(--accent);
-        }
-        
-        .split h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        
-        .split p {
-            font-size: 32px;
-            font-weight: 700;
-        }
-        
-        .split-you p {
-            color: var(--success);
-        }
-        
-        .split-us p {
-            color: var(--accent);
-        }
-        
-        /* Testimonials Section */
-        .testimonials {
-            padding: 100px 0;
-            background-color: var(--dark);
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .testimonial-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .testimonial-card:hover {
-            border-color: var(--primary);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-            object-fit: cover;
-        }
-        
-        .author-info h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-        
-        .author-info p {
-            opacity: 0.7;
-            font-size: 14px;
-        }
-        
-        /* FAQ Section */
-        .faq {
-            padding: 100px 0;
-            background-color: var(--secondary);
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .faq-question {
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.05);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-        }
-        
-        .faq-question:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease;
-        }
-        
-        .faq-item.active .faq-answer {
-            padding: 20px;
-            max-height: 500px;
-        }
-        
-        /* CTA Section */
-        .cta {
-            padding: 100px 0;
-            background: linear-gradient(rgba(10, 10, 20, 0.9), rgba(10, 10, 20, 0.9)), url('https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80') no-repeat center center/cover;
-            text-align: center;
-        }
-        
-        .cta h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        .cta p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #0a0a14;
-            padding: 60px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: var(--light);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--primary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            color: var(--light);
-            font-size: 20px;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--primary);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
-            font-size: 14px;
-        }
-        
-        /* Telegram Widget */
-        .telegram-widget {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
-        }
-        
-        .telegram-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background-color: #0088cc;
-            border-radius: 50%;
-            color: white;
-            font-size: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-        
-        .telegram-btn:hover {
-            transform: scale(1.1);
-            background-color: #0077b5;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .section-title h2 {
-                font-size: 30px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: var(--secondary);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: left 0.3s;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .hero-buttons {
-                display: flex;
-                flex-direction: column;
-            }
-            
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 15px;
-            }
-            
-            .profit-split {
-                flex-direction: column;
-            }
-            
-            .split {
-                margin: 10px 0;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 28px;
-            }
-            
-            .hero p {
-                font-size: 16px;
-            }
-            
-            .price {
-                font-size: 36px;
-            }
-            
-            .profit-card {
-                padding: 30px 20px;
-            }
-            
-            .profit-card h3 {
-                font-size: 24px;
-            }
-            
-            .cta h2 {
-                font-size: 28px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Father of Trading - Premium Crypto Signals</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f8d030;
+      --secondary: #1a1a2e;
+      --dark: #0f0f1a;
+      --light: #f8f9fa;
+      --accent: #6c63ff;
+      --success: #28a745;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .ticker {
+      display: flex;
+      gap: 20px;
+      background: #000;
+      padding: 10px;
+      justify-content: center;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .social-links {
+      font-size: 26px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .telegram-preview iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 500px;
+      border: none;
+      margin: 0 auto;
+      display: block;
+    }
+    .hero {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1639762681057-408e52192e55') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .tiktok-bar {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #000;
+      padding: 10px 20px;
+      border-radius: 5px;
+      z-index: 999;
+    }
+    .tiktok-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 40px;
+      background-color: #0a0a14;
+      color: var(--light);
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo"><img src="pro.jpg" alt="Profile" style="width:40px;height:40px;border-radius:50%;margin-right:10px;">
-                    <i class="fas fa-coins"></i>
-                    Father of Trading
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#profit">Profit Sharing</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
+  <header class="logo">
+    <img src="pro.jpg" alt="Profile">
+    <h1>Father of Trading</h1>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Join <span>Father of Trading</span> – Elite Crypto Signals for Maximum Profits</h1>
-                <p>Get expert-curated crypto signals, high-accuracy trades, and exclusive market insights.</p>
-                <div class="hero-buttons">
-                    <a href="https://t.me/FatherofTradingofficia" class="btn">Join Our Telegram Channel Now</a>
-                    <a href="#pricing" class="btn btn-outline">View Pricing</a>
-                </div>
-            </div>
-        </div>
-        
-<div style="position:absolute; top:20px; right:20px; background:#000; padding:10px 20px; border-radius:5px; z-index:999;">
-  <a href="https://www.tiktok.com/@haadi.writees?_t=ZS-8yCmlMxqK2i" target="_blank" style="color:#f8d030; text-decoration:none; font-weight:bold;">
-    Watch Our TikTok Video
+  <section class="hero">
+    <div class="tiktok-bar">
+      <a href="https://www.tiktok.com/@haadi.writees?_t=ZS-8yCmlMxqK2i" target="_blank">Watch Our TikTok Video</a>
+    </div>
+    <div>
+      <h2>Join the Elite Crypto Community</h2>
+      <p>Accurate signals, trusted results, and expert mentorship.</p>
+    </div>
+  </section>
+
+  <div class="ticker">
+    <div class="ticker-item"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" width="24"> BTC: $<span class="btc-price">0</span> <span class="btc-change">+0.00%</span></div>
+    <div class="ticker-item"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" width="24"> ETH: $<span class="eth-price">0</span> <span class="eth-change">+0.00%</span></div>
+    <div class="ticker-item"><img src="https://cryptologos.cc/logos/solana-sol-logo.png" width="24"> SOL: $<span class="sol-price">0</span> <span class="sol-change">+0.00%</span></div>
+    <div class="ticker-item"><img src="https://cryptologos.cc/logos/xrp-xrp-logo.png" width="24"> XRP: $<span class="xrp-price">0</span> <span class="xrp-change">+0.00%</span></div>
+  </div>
+
+  <div class="social-links">
+    <a href="#"><i class="fab fa-telegram"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@haadi.writees?_t=ZS-8yCmlMxqK2i"><i class="fab fa-tiktok"></i></a>
+  </div>
+
+  <section style="text-align:center;padding:60px 20px;background:#111;">
+    <h2 style="color:#f8d030;">Join <span id="memberCount">0</span>+ Active Crypto Traders</h2>
+    <p style="color:#ccc;">We're growing every day. Become a part of our elite trading family.</p>
+  </section>
+
+  <div class="telegram-preview">
+    <iframe src="https://t.me/FatherofTradingofficia/1?embed=1"></iframe>
+    <p style="color:#aaa;text-align:center">Live Signal Preview from Telegram</p>
+  </div>
+
+  <div class="tradingview-widget-container" style="margin: 40px auto; max-width: 900px;">
+    <div id="tradingview_btc"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+      new TradingView.widget({
+        "width": "100%",
+        "height": 400,
+        "symbol": "BINANCE:BTCUSDT",
+        "interval": "60",
+        "timezone": "Etc/UTC",
+        "theme": "dark",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "hide_top_toolbar": true,
+        "save_image": false,
+        "container_id": "tradingview_btc"
+      });
+    </script>
+  </div>
+
+  <a href="https://wa.me/923001234567" target="_blank" style="position:fixed;bottom:20px;left:20px;background:#25D366;color:white;padding:10px 15px;border-radius:30px;z-index:999;font-weight:bold;text-decoration:none;">
+    Chat on WhatsApp
   </a>
-</div>
 
-<div class="ticker">
-            <div class="ticker-content">
-                <div class="ticker-item">
-                    <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC">
-                    <span>BTC: $<span class="btc-price">00,000</span> <span class="btc-change">+0.00%</span></span>
-                </div>
-                <div class="ticker-item">
-                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH">
-                    <span>ETH: $<span class="eth-price">0,000</span> <span class="eth-change">+0.00%</span></span>
-                </div>
-                <div class="ticker-item">
-                    <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="SOL">
-                    <span>SOL: $<span class="sol-price">00.00</span> <span class="sol-change">+0.00%</span></span>
-                </div>
-                <div class="ticker-item">
-                    <img src="https://cryptologos.cc/logos/xrp-xrp-logo.png" alt="XRP">
-                    <span>XRP: $<span class="xrp-price">0.0000</span> <span class="xrp-change">+0.00%</span></span>
-                </div>
-            </div>
-        </div>
-    </section>
+  <footer>
+    <p>&copy; 2025 Father of Trading - All Rights Reserved.</p>
+  </footer>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose Father of Trading?</h2>
-                <p>We provide the most accurate crypto signals with proven results to help you maximize your profits in the volatile crypto market.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>High Accuracy Signals</h3>
-                    <p>Our signals boast a 90%+ win rate, carefully analyzed by our expert traders with years of market experience.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>24/7 Market Monitoring</h3>
-                    <p>Our team monitors the markets around the clock to identify the most profitable trading opportunities.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
-                    <h3>Transparent Track Record</h3>
-                    <p>We provide verified trade history and performance metrics so you can see our success before joining.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>VIP Community Access</h3>
-                    <p>Join our exclusive community of serious traders to share insights and strategies.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <script>
+    async function fetchPrices() {
+      const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple&vs_currencies=usd&include_24hr_change=true');
+      const data = await res.json();
+      document.querySelector('.btc-price').innerText = data.bitcoin.usd.toLocaleString();
+      document.querySelector('.btc-change').innerText = (data.bitcoin.usd_24h_change).toFixed(2) + '%';
+      document.querySelector('.eth-price').innerText = data.ethereum.usd.toLocaleString();
+      document.querySelector('.eth-change').innerText = (data.ethereum.usd_24h_change).toFixed(2) + '%';
+      document.querySelector('.sol-price').innerText = data.solana.usd.toLocaleString();
+      document.querySelector('.sol-change').innerText = (data.solana.usd_24h_change).toFixed(2) + '%';
+      document.querySelector('.xrp-price').innerText = data.ripple.usd.toLocaleString();
+      document.querySelector('.xrp-change').innerText = (data.ripple.usd_24h_change).toFixed(2) + '%';
+    }
+    fetchPrices();
+    setInterval(fetchPrices, 60000);
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="section-title">
-                <h2>Premium Membership Plans</h2>
-                <p>Choose the plan that fits your trading style and budget. Limited time offer: First 50 members get 10% off!</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Monthly Plan</h3>
-                        <div class="price">$100<span>/month</span></div>
-                        <p>Best for short-term traders</p>
-                    </div>
-                    <div class="pricing-body">
-                        <ul class="pricing-features">
-                            <li>Daily signals (5-7 high-probability trades)</li>
-                            <li>Market updates & technical analysis</li>
-                            <li>24/7 support</li>
-                            <li>Basic risk management guidance</li>
-                            <li>Access to public channel</li>
-                        </ul>
-                        <a href="https://t.me/FatherofTradingofficia" class="btn">Get Started</a>
-                    </div>
-                </div>
-                <div class="pricing-card">
-                    <div class="popular-tag">Most Popular</div>
-                    <div class="pricing-header">
-                        <h3>Lifetime Plan</h3>
-                        <div class="price">$999<span>/one-time</span></div>
-                        <p>Ultimate value for serious traders</p>
-                    </div>
-                    <div class="pricing-body">
-                        <ul class="pricing-features">
-                            <li>All monthly benefits</li>
-                            <li>Lifetime access (never pay again)</li>
-                            <li>Exclusive VIP group access</li>
-                            <li>Priority support</li>
-                            <li>Advanced trading strategies</li>
-                            <li>Early access to new features</li>
-                        </ul>
-                        <a href="https://t.me/FatherofTradingofficia" class="btn">Get Lifetime Access</a>
-                    </div>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Personal Trade Plan</h3>
-                        <div class="price">$250<span>/lifetime</span></div>
-                        <p>1-on-1 coaching</p>
-                    </div>
-                    <div class="pricing-body">
-                        <ul class="pricing-features">
-                            <li>Custom trade setups</li>
-                            <li>Personalized strategy sessions</li>
-                            <li>Direct mentorship from expert</li>
-                            <li>Portfolio review & optimization</li>
-                            <li>Priority signal notifications</li>
-                            <li>Weekly 1-on-1 calls</li>
-                        </ul>
-                        <a href="https://t.me/FatherofTradingofficia" class="btn">Get Personal Coaching</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Profit Sharing Section -->
-    <section class="profit-sharing" id="profit">
-        <div class="container">
-            <div class="section-title">
-                <h2>Profit Sharing Model</h2>
-                <p>Let our experts trade for you with our managed account service.</p>
-            </div>
-            <div class="profit-card">
-                <h3>40/60 Profit Split</h3>
-                <p>We take on the trading risk while you enjoy consistent profits from our expert trading strategies.</p>
-                
-                <div class="profit-split">
-                    <div class="split split-you">
-                        <h4>You Keep</h4>
-                        <p>60%</p>
-                    </div>
-                    <div class="split split-us">
-                        <h4>We Take</h4>
-                        <p>40%</p>
-                    </div>
-                </div>
-                
-                <p>Minimum capital required: $5,000. Transparent reporting and monthly withdrawals.</p>
-                <a href="https://t.me/FatherofTradingofficia" class="btn">Learn More About Profit Sharing</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Our Members Say</h2>
-                <p>Don't just take our word for it. Here's what our community members have to say.</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Joined Father of Trading 3 months ago and my portfolio is up 240%. The signals are incredibly accurate and the community support is top-notch."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="author-img">
-                        <div class="author-info">
-                            <h4>Michael T.</h4>
-                            <p>Lifetime Member</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "The personal coaching plan transformed my trading. I went from losing money to consistently profitable in just 6 weeks. Worth every penny!"
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="author-img">
-                        <div class="author-info">
-                            <h4>Sarah K.</h4>
-                            <p>Personal Coaching Client</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "I've tried many signal services before, but none compare to Father of Trading. The 90%+ accuracy claim is real - my account has grown steadily every month."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User" class="author-img">
-                        <div class="author-info">
-                            <h4>David R.</h4>
-                            <p>Monthly Member</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Got questions? We've got answers. If you can't find what you're looking for, contact us directly.</p>
-            </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How do I join after payment?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>After completing your payment, you'll receive an email with instructions to join our private Telegram channel. Typically, access is granted within 1-2 hours of payment confirmation.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What payment methods do you accept?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We accept various payment methods including Bitcoin (BTC), Ethereum (ETH), USDT, PayPal, and credit/debit cards. Payment links will be provided after you contact us through Telegram.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Is there a refund policy?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Due to the digital nature of our service and the time-sensitive value of our signals, we do not offer refunds. However, we're confident in our service and offer a 7-day performance guarantee - if you don't see results in your first week, we'll work with you to improve your trading.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How many signals do you provide daily?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We typically provide 5-7 high-probability signals per day, focusing on quality over quantity. During high volatility periods, this may increase to 10-12 signals.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Do you provide stop-loss and take-profit levels?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, every signal comes with clear entry, stop-loss, and take-profit levels, along with detailed analysis explaining our reasoning for the trade.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Ready to Maximize Your Crypto Gains?</h2>
-            <p>Join Father of Trading today and start receiving high-accuracy crypto signals from our expert traders.</p>
-            <a href="https://t.me/FatherofTradingofficia" class="btn">Get Premium Access Now</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Father of Trading</h3>
-                    <p>Providing elite crypto trading signals and education since 2020. Join thousands of satisfied members worldwide.</p>
-                    <div class="social-links" style="font-size:26px;">
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-<a href="https://www.tiktok.com/@haadi.writees?_t=ZS-8yCmlMxqK2i"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#profit">Profit Sharing</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><
+    function animateValue(id, start, end, duration) {
+      const obj = document.getElementById(id);
+      let startTimestamp = null;
+      const step = timestamp => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerText = Math.floor(progress * (end - start) + start);
+        if (progress < 1) window.requestAnimationFrame(step);
+      };
+      window.requestAnimationFrame(step);
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      animateValue("memberCount", 0, 5387, 2000);
+    });
+  </script>
+</body>
+</html>
